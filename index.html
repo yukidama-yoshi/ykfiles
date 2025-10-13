@@ -1,26 +1,59 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>ファイル置き場</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f0f0f0;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      color: #333;
-    }
-    p {
-      font-size: 1.2em;
-      color: #666;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>ファイル置き場</title>
 </head>
 <body>
-  <h1>ファイルを色々置くよ</h1>
-  <p>ここにはPDFやメモなど、いろんなファイルを置いていく予定です。</p>
+    <h1>ファイル置き場</h1>
+
+    <h2>目的のファイルへ移動</h2>
+
+    <label>フォルダ名：</label>
+    <input id="f"><br>
+
+    <label>ファイル名：</label>
+    <input id="n"><br>
+
+    <p id="p">URLがここに表示されます</p>
+
+    <p>
+        <a href="javascript:void(0)" onclick="m()">移動する</a>
+    </p>
+
+    <p>
+        <a href="https://yukidama-yoshi.github.io/index.html">ホームページへ</a>
+    </p>
+
+    <script>
+        const f = document.getElementById("f");
+        const n = document.getElementById("n");
+        const p = document.getElementById("p");
+
+        function u() {
+            const a = f.value.trim();
+            const b = n.value.trim();
+            if (a && b) {
+                const url = `https://yukidama-yoshi.github.io/files/${a}/${b}`;
+                p.textContent = url;
+            } else {
+                p.textContent = "URLがここに表示されます";
+            }
+        }
+
+        function m() {
+            const a = f.value.trim();
+            const b = n.value.trim();
+            if (a && b) {
+                const url = `https://yukidama-yoshi.github.io/files/${a}/${b}`;
+                window.open(url);
+            } else {
+                alert("フォルダ名とファイル名を両方入力してください");
+            }
+        }
+
+        f.addEventListener("input", u);
+        n.addEventListener("input", u);
+    </script>
 </body>
 </html>
